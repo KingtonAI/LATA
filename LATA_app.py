@@ -14,24 +14,8 @@ except KeyError:
 
 genai.configure(api_key=API_KEY)
 
-# --- TEMPORARY CODE TO LIST AVAILABLE MODELS ---
-# You can remove this section after you find a working model name.
-st.sidebar.subheader("Available Gemini Models:")
-try:
-    found_models = []
-    for m in genai.list_models():
-        if "generateContent" in m.supported_generation_methods:
-            found_models.append(m.name)
-    if found_models:
-        st.sidebar.markdown("Models supporting `generateContent`:")
-        for model_name in found_models:
-            st.sidebar.write(f"- `{model_name}`")
-        st.sidebar.info("Try updating the `model` variable in your code to one of these names.")
-    else:
-        st.sidebar.warning("No models found supporting `generateContent`. Check your API key or region.")
-except Exception as e:
-    st.sidebar.error(f"Error listing models: {e}")
-# --- END TEMPORARY CODE ---
+model = genai.GenerativeModel('models/gemini-2.0-flash')
+
 
 # Initialize the Generative Model
 # Using gemini-pro is generally good for text generation tasks.
