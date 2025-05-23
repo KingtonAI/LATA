@@ -14,7 +14,7 @@ except KeyError:
 
 genai.configure(api_key=API_KEY)
 
-model = genai.GenerativeModel('models/gemini-2.0-flash')
+model = genai.GenerativeModel('models/gemini-1.5-pro')
 
 
 # Initialize the Generative Model
